@@ -10,11 +10,9 @@ import java.time.LocalDateTime;
 @Setter
 public class TraceResponse {
     private Long idOrder;
-    private Long idClient;
     private String emailClient;
     private LocalDateTime dateTimeOrder;
     private OrderStatusEnum orderStatusOld;
     private OrderStatusEnum orderStatusNew;
-    private Long idChef;
     private String emailChef;
 }

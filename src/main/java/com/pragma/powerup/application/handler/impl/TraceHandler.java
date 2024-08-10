@@ -26,7 +26,7 @@ public class TraceHandler implements ITraceHandler {
     }
 
     @Override
-    public List<TraceResponse> getTracesByIdClient(Long idClient) {
-        return traceResponseMapper.toResponseList(traceServicePort.getTracesByIdClient(idClient));
+    public List<TraceResponse> getTracesByIdClientAndIdOrder(Long idClient, Long idOrder) {
+        return traceResponseMapper.toResponseList(traceServicePort.getTracesByIdClientAndIdOrder(idClient, idOrder));
     }
 }

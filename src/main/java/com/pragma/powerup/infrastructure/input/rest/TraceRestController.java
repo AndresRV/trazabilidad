@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,11 +37,11 @@ public class TraceRestController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping("")
+    @GetMapping("/{idOrder}")
     @PreAuthorize("hasRole('Cliente')")
-    public ResponseEntity<List<TraceResponse>> getTracesByIdClient(HttpServletRequest request) {
+    public ResponseEntity<List<TraceResponse>> getTracesByIdClientAndIdOrder(HttpServletRequest request, @PathVariable Long idOrder) {
         Long idUserRequest = extractIdUserRequest(request.getHeader(HttpHeaders.AUTHORIZATION));
-        return ResponseEntity.ok(traceHandler.getTracesByIdClient(idUserRequest));
+        return ResponseEntity.ok(traceHandler.getTracesByIdClientAndIdOrder(idUserRequest, idOrder));
     }
 
     private Long extractIdUserRequest(String jwtToken) {

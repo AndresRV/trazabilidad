@@ -9,9 +9,7 @@ import lombok.Setter;
 public class TraceRequest {
     private Long idOrder;
     private Long idClient;
-    private String emailClient;
     private OrderStatusEnum orderStatusOld;
     private OrderStatusEnum orderStatusNew;
     private Long idChef;
-    private String emailChef;
 }

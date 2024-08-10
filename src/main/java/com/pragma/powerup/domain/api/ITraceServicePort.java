@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ITraceServicePort {
     void saveTrace(Trace trace);
-    List<Trace> getTracesByIdClient(Long idClient);
+    List<Trace> getTracesByIdClientAndIdOrder(Long idClient, Long idOrder);
 }

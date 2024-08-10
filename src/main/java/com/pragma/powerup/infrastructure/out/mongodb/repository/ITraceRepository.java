@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface ITraceRepository extends MongoRepository<TraceEntity, String> {
-    List<TraceEntity> findAllByIdClient(Long idClient);
+    List<TraceEntity> findAllByIdClientAndIdOrder(Long idClient, Long idOrder);
 }

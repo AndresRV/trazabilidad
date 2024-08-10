@@ -1,15 +1,36 @@
 package com.pragma.powerup.infrastructure.out.mongodb.adapter;
 
-import com.pragma.powerup.infrastructure.out.mongodb.entity.TraceEntity;
+import com.pragma.powerup.domain.model.Trace;
+import com.pragma.powerup.domain.spi.ITracePersistencePort;
+import com.pragma.powerup.infrastructure.exception.NoDataFoundException;
+import com.pragma.powerup.infrastructure.out.mongodb.mapper.ITraceEntityMapper;
 import com.pragma.powerup.infrastructure.out.mongodb.repository.ITraceRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import lombok.RequiredArgsConstructor;
+
 import java.util.List;
 
-@Service
-public class TraceMongodbAdapter {
-    @Autowired
-    private ITraceRepository traceRepository;
+//@Service
+@RequiredArgsConstructor
+public class TraceMongodbAdapter implements ITracePersistencePort {
+    private final ITraceRepository traceRepository;
+    private final ITraceEntityMapper traceEntityMapper;
+
+    //@Autowired
+    //private ITraceRepository traceRepository;
+
+    @Override
+    public void saveTrace(Trace trace) {
+        var a = traceEntityMapper.toEntity(trace);
+
+        traceRepository.save(traceEntityMapper.toEntity(trace));
+    }
+
+    @Override
+    public List<Trace> getTracesByIdClient(Long idClient) {
+        return traceEntityMapper.toTracetList(traceRepository.findAllByIdClient(idClient));
+    }
+
+/*
 
     public List<TraceEntity> obtenerTodasLasPersonas() {
         return traceRepository.findAll();
@@ -33,5 +54,7 @@ public class TraceMongodbAdapter {
 
     public void eliminarPersona(String id) {
         traceRepository.deleteById(id);
-    }
+    }*/
+
+
 }

@@ -1,4 +1,4 @@
-package com.pragma.powerup.infrastructure.input.rest;
+/*package com.pragma.powerup.infrastructure.input.rest;
 
 import com.pragma.powerup.infrastructure.out.mongodb.adapter.TraceMongodbAdapter;
 import com.pragma.powerup.infrastructure.out.mongodb.entity.TraceEntity;
@@ -56,4 +56,4 @@ public class MongoTestController {
         personaService.eliminarPersona(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-}
+}*/

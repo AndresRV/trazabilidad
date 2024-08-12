@@ -30,6 +30,10 @@ public class TraceUseCase implements ITraceServicePort {
     }
 
     private String getEmail(Long idUser) {
-        return userRestPort.emailUser(idUser);
+        String email = null;
+        if (idUser != null) {
+            email = userRestPort.emailUser(idUser);
+        }
+        return email;
     }
 }
